@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Up to here, we have working scrollable pages
 
-        TabLayout tabLayout = findViewById(R.id.tabLayout);
+        final TabLayout tabLayout = findViewById(R.id.tabLayout);
         tabLayout.addTab(tabLayout.newTab().setText("Bar"));
         tabLayout.addTab(tabLayout.newTab().setText("Foo"));
 
@@ -47,6 +47,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
 
+            }
+        });
+        pa.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                tabLayout.selectTab(tabLayout.getTabAt(position));
             }
         });
 
